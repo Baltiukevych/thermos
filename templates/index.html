@@ -1,16 +1,28 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Moja pierwsza strona</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-    <h1>Witam {{ user }}</h1>
+{% block title %}
+Thermos - welcome.
+{% endblock %}
 
+{% block content %}
 
-</body>
-</html>
+<article>
+    <header>
+        <h1>Welcome</h1>
+        <p>Thermos is a simple bookmarking site</p>
+    </header>
+    <section>
+        <h2>Recently Added</h2>
+        {% if bookmarks %}
+        <ul>
+            {% for bm in bookmarks %}
+            <li>{{ bm.user }} added <a href="{{ bm.url }}" target="_blank">{{ bm.description }}></a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            No bookmarks.
+        {% endif %}
+    </section>
+</article>
+
+{% endblock %}

@@ -15,12 +15,20 @@ Thermos - welcome.
         <h2>Recently Added</h2>
         {% if bookmarks %}
         <ul>
-            {% for bm in bookmarks %}
-            <li>{{ bm.user }} added <a href="{{ bm.url }}" target="_blank">{{ bm.description }}></a></li>
-            {% endfor %}
+           {% for bm in bookmarks %}
+                    <li>{{ bm.user }} added
+                        <a href="{{ bm.url }}" target="_blank">
+                            {% if bm.description %}
+                                {{ bm.description }}
+                            {% else %}
+                                {{ bm.url }}
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endfor %}
         </ul>
         {% else %}
-            No bookmarks.
+        No bookmarks.
         {% endif %}
     </section>
 </article>

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "forms_macros.html" import render_field %}
 
 {% block title %}
 Thermos - Add Bookmark.
@@ -8,19 +9,20 @@ Thermos - Add Bookmark.
 
     <section>
         <h1>Add a new URL</h1>
-        <form action="">
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
             <table>
-                <tr>
-                    <td><label for="bookmark">Add URL</label></td>
-                    <td><input type="text" id="bookmark"></td>
-                </tr>
-                <tr>
+                {{ render_field(form.url, size=50) }}
+                {{ render_field(form.description, size=50) }}
+
+                <tr class="submit">
                     <td></td>
                     <td>
-                        <button>Submit</button>
+                        <button type="submit">Submit</button>
                     </td>
                 </tr>
             </table>
+
         </form>
     </section>
 

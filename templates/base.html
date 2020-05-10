@@ -17,12 +17,12 @@
 
 <div class="header-container">
     <header class="wrapper clearfix">
-        <h1 class="title">Thermos</h1>
-        <nav>
+        <a href="{{ url_for('index') }}">
+             <h1 class="title">Thermos</h1>
+        </a>
+                <nav>
             <ul>
-                <li><a href="#">nav ul li a</a></li>
-                <li><a href="#">nav ul li a</a></li>
-                <li><a href="#">nav ul li a</a></li>
+                <li><a href="{{ url_for('add') }}">Add Bookmark</a></li>
             </ul>
         </nav>
     </header>
@@ -31,8 +31,16 @@
 <div class="main-container">
     <div class="main wrapper clearfix">
 
-        <article>
-
+        <article class="flashes">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+            <ul>
+                {% for messages in messages %}
+                <li>{{ messages }}</li>
+                {% endfor %}
+            </ul>
+                {% endif %}
+            {% endwith %}
         </article>
 
         {% block content %}

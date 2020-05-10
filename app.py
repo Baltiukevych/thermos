@@ -43,6 +43,7 @@ def add():
             "description": description
         }
         bookmarks.append(bm)
+        flash(f"Stored {description}")
         return redirect(url_for('index'))
     return render_template('add.html', form=form)
 
